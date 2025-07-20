@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("./assets/fonts/Montserrat-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Midland-Regular";
+  src: url("./assets/fonts/MidlandluxuryRegular-lgze5.otf");
+}
+
+@font-face {
+  font-family: "Midland-Bold";
+  src: url("./assets/fonts/MidlandluxuryBold-9Yxqy.otf");
+}
+
+@font-face {
+  font-family: "Oswald-Light";
+  src: url("./assets/fonts/Oswald-Light.ttf");
+}
+
+@font-face {
+  font-family: "Rushford";
+  src: url("./assets/fonts/Rushfordclean-rgz89.otf");
+}
+
+@font-face {
+  font-family: "Aulieny";
+  src: url("./assets/fonts/AulienyRegular-0vBM9.otf");
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    font-family: "Montserrat-Medium", Helvetica, Arial, sans-serif;
+    @apply bg-white text-gray-800;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  h6 {
+    @apply text-lg;
+  }
+
+  input {
+    @apply border border-gray-300;
+  }
+
+  button {
+    @apply pt-1 pb-1 pl-3 pr-3 border border-gray-300 rounded-3xl;
+  }
+
+  button:hover {
+    @apply cursor-pointer border-gray-400;
+  }
+
+  hr {
+    @apply w-full mt-2 border border-gray-200 my-8;
+  }
+}
+
+@layer components {
+  .tinymce-content {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .tinymce-content h1, 
+  .tinymce-content h2,
+  .tinymce-content h3,
+  .tinymce-content h4,
+  .tinymce-content h5,
+  .tinymce-content h6 {
+    @apply font-["Midland-Bold"];
+  }
+
+  .tinymce-content h1 {
+    @apply text-5xl mb-12 mt-8;
+  }
+
+  .tinymce-content h2 {
+    @apply text-3xl mb-4 mt-8;
+  }
+
+  .tinymce-content h3 {
+    @apply text-2xl mb-4 mt-8;
+  }
+
+  .tinymce-content h4 {
+    @apply text-xl mb-4 mt-8;
+  }
+
+  .tinymce-content h5 {
+    @apply text-lg mb-4 mt-8;
+  }
+
+  .tinymce-content h6 {
+    @apply text-base mb-4 mt-6;
+  }
+
+  .tinymce-content a {
+    @apply text-blue-500;
+  }
+}
