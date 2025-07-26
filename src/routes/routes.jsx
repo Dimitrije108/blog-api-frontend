@@ -2,7 +2,7 @@
 // import { checkUserLoader } from "../loaders/loaders";
 
 // import ProtectedRoute from "../layouts/ProtectedRoute";
-// import Layout from "../layouts/Layout";
+import Layout from "../layouts/Layout";
 import ErrorPage from "../components/ErrorPage";
 // import Login from "../pages/Login";
 
@@ -29,7 +29,7 @@ import Categories from "../features/Categories";
 const routes = [
 	{
 		path: "/",
-		// Component: Layout,
+		Component: Layout,
 		ErrorBoundary: ErrorPage,
 		children: [
 			{
