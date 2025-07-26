@@ -1,6 +1,6 @@
 import { useNavigation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-// import Header from "./Header";
+import Header from "./Header";
 import Spinner from "../components/Spinner";
 
 export default function Layout() {
@@ -10,7 +10,7 @@ export default function Layout() {
 
   return (
     <div className="mx-auto lg:max-w-[90rem] h-screen">
-      {/* <Header /> */}
+      <Header />
       <main className="pl-10 pr-10 pb-14">
         {isLoading
           ? <Spinner />
