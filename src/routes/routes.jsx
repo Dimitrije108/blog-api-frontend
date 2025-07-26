@@ -4,8 +4,9 @@
 // import ProtectedRoute from "../layouts/ProtectedRoute";
 import Layout from "../layouts/Layout";
 import ErrorPage from "../components/ErrorPage";
-// import Login from "../pages/Login";
 
+// Auth feature
+import Login from "../features/auth/Login";
 // Homepage feature
 import Homepage from "../features/Homepage";
 // Article list feature
@@ -62,16 +63,22 @@ const routes = [
 		]
 	},
 	{
-		path: '/login',
-		// Component: Login,
-		// loader: checkUserLoader,
-		// ErrorBoundary: ErrorPage,
-	},
-	{
-		path: '/register',
-		// Component: Register,
-		// loader: checkUserLoader,
-		// ErrorBoundary: ErrorPage,
+		path: '/auth',
+		ErrorBoundary: ErrorPage,
+		children: [
+			{
+				path: 'login',
+				Component: Login,
+				// loader: checkUserLoader,
+				ErrorBoundary: ErrorPage,
+			},
+			{
+				path: 'register',
+				// Component: Register,
+				// loader: checkUserLoader,
+				// ErrorBoundary: ErrorPage,
+			},
+		]
 	},
 ];
 
