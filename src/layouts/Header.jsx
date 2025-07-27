@@ -14,7 +14,7 @@ export default function Header() {
 	// Logout user
 	const handleLogout = () => {
 		logout();
-		navigate("/login");
+		navigate("/auth/login");
 	};
 
 	return (
