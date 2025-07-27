@@ -1,11 +1,12 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import api from "../axiosConfig";
 import { jwtDecode } from "jwt-decode";
-import checkAuth from "../utils/checkAuth";
+import checkAuth from "../features/auth/checkAuth";
 
 const AuthContext = createContext({
 	user: null,
 	token: null, 
+	register: () => {},
   login: () => {},
 	logout: () => {},
 });
@@ -17,6 +18,28 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		authUser();
 	}, []);
+
+	// Request user registration
+  const register = async (email, username, password, confirmPassword) => {
+		try {
+			await api.post(
+				"/auth/register", 
+				{ email, username, password, confirmPassword }
+			);
+			return { success: true };
+		} catch (error) {
+			// Return form validation error/s
+			if (error.response?.status === 400) {
+				return { success: false, error: error.response.data.details };
+			};
+			// Return conflict error/s
+			if (error.response?.status === 409) {
+				return { success: false, error: [error.response.data.message] };
+			};
+			// Otherwise let the error boundary catch it
+			throw error;
+		};
+	};
 
 	// Request user login
   const login = async (email, password) => {
@@ -80,6 +103,7 @@ const AuthProvider = ({ children }) => {
 	const value = {
 		user,
 		token,
+		register,
 		login,
 		logout,
 		authUser,
