@@ -7,6 +7,7 @@ import ErrorPage from "../components/ErrorPage";
 
 // Auth feature
 import Login from "../features/auth/Login";
+import Register from "../features/auth/Register";
 // Homepage feature
 import Homepage from "../features/Homepage";
 // Article list feature
@@ -63,20 +64,18 @@ const routes = [
 		]
 	},
 	{
-		path: '/auth',
+		path: "/auth",
 		ErrorBoundary: ErrorPage,
 		children: [
 			{
-				path: 'login',
+				path: "login",
 				Component: Login,
 				// loader: checkUserLoader,
-				ErrorBoundary: ErrorPage,
 			},
 			{
-				path: 'register',
-				// Component: Register,
+				path: "register",
+				Component: Register,
 				// loader: checkUserLoader,
-				// ErrorBoundary: ErrorPage,
 			},
 		]
 	},
