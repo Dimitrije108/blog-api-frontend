@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
 // Login controlled component utilizing global auth context
 export default function Login() {
@@ -11,16 +11,19 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const userLogin = await login(email, password);
-    setEmail("");
-    setPassword("");
+    try {
+      const userLogin = await login(email, password);
 
-    if (!userLogin.success) {
-      setError(userLogin.error);
-    } else {
-      setError(null);
-      navigate("/");
-    };
+      if (!userLogin.success) {
+        setPassword("");
+        setError(userLogin.error);
+      } else {
+        setError(null);
+        navigate("/");
+      };
+    } catch(error) {
+      throw error;
+    }
   };
 
   return (
@@ -58,6 +61,7 @@ export default function Login() {
         }
         <button type="submit">Login</button>
       </form>
+      <p>Don't have an account? <Link to="/auth/register" className="text-blue-500">Register</Link> here.</p>
     </div>
   )
 };
