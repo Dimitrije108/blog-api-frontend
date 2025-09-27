@@ -1,4 +1,6 @@
-export default function ErrorMessage({ error }) {
+import type { AppError } from "../types/error.ts";
+
+export default function ErrorMessage({ error }: { error: AppError }) {
 	const status = error.status;
 	const { error: name, message, details } = error.response.data;
 
