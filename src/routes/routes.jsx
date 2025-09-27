@@ -1,6 +1,3 @@
-// Auth checks
-// import { checkUserLoader } from "../loaders/loaders";
-
 // import ProtectedRoute from "../layouts/ProtectedRoute";
 import Layout from "../layouts/Layout";
 import ErrorPage from "../components/ErrorPage";
@@ -8,6 +5,7 @@ import ErrorPage from "../components/ErrorPage";
 // Auth feature
 import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
+import redirectIfAuthenticated from "../features/auth/redirectIfAuthenticated";
 // Homepage feature
 import Homepage from "../features/Homepage";
 // Article list feature
@@ -19,10 +17,6 @@ import articleLoader from "../features/articles/ArticleDetails/articleLoader";
 // Categories feature
 import Categories from "../features/Categories";
 // import categoriesLoader from "../features/categories/categoriesLoader";
-// import categororiesAction from "../features/categories/categoriesAction";
-// Category articles feature
-// import ArticleDetail from "../features/articles/ArticleDetails/ArticleDetail";
-// import articleLoader from "../features/articles/ArticleDetails/articleLoader";
 
 // ProtectedRoute component is for loading UI
 // authLoader stops loaders from executing if auth fails
@@ -37,7 +31,6 @@ const routes = [
 			{
 				index: true,
 				Component: Homepage,
-				// loader: preFetchAuth(dashboardLoader),
 			},
 			{
 				path: "articles", 
@@ -53,13 +46,11 @@ const routes = [
 				path: "categories",
 				Component: Categories,
 				// loader: preFetchAuth(categoriesLoader),
-				// action: preFetchAuth(categororiesAction),
 			},
 			{
 				path: "categories/:categoryId",
 				// Component: CategoryDetail,
 				// loader: preFetchAuth(categoriesLoader),
-				// action: preFetchAuth(categororiesAction),
 			},
 		]
 	},
@@ -70,12 +61,12 @@ const routes = [
 			{
 				path: "login",
 				Component: Login,
-				// loader: checkUserLoader,
+				loader: redirectIfAuthenticated,
 			},
 			{
 				path: "register",
 				Component: Register,
-				// loader: checkUserLoader,
+				loader: redirectIfAuthenticated,
 			},
 		]
 	},
